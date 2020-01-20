@@ -1,0 +1,18 @@
+require: rubocop-rails
+AllCops:
+  Exclude:
+    - db/schema.rb
+    - db/migrate/*
+    - spec/spec_helper.rb
+    - spec/rails_helper.rb
+    - Gemfile
+    - bin/*
+Rails:
+  Enabled: true
+Documentation:
+    Enabled: false
+Metrics/LineLength:
+  Max: 120
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
