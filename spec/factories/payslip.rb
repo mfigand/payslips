@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :payslip do
-    registry_id { '000000000001' }
+    registry_id { RegistryIdService.generate }
     vat_idNumber { '97084172E' }
     date { '20181231' }
     gross { '00248600' }
