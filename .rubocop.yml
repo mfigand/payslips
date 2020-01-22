@@ -13,6 +13,13 @@ Documentation:
     Enabled: false
 Metrics/LineLength:
   Max: 120
+Metrics/MethodLength:
+  Max: 15
 Metrics/BlockLength:
   Exclude:
     - 'spec/**/*'
+    - lib/tasks/download_payslips.rake
+Metrics/AbcSize:
+  Exclude:
+    - lib/tasks/download_payslips.rake
+
