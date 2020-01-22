@@ -19,8 +19,18 @@ RSpec.describe 'download:payslips' do
   end
 
   describe 'import payslips records' do
-    it do
-      expect { download_payslips_task }.to change { Payslip.count }.by_at_least(1)
+    context 'assuming remote file has 10 records' do
+      it do
+        expect { download_payslips_task }.to change { Payslip.count }.by(10)
+      end
+    end
+
+    context 'unable to download file' do
+      let(:file_name) { 'nonexistent_file.txt' }
+
+      it do
+        expect { download_payslips_task }.to change { Payslip.count }.by(0)
+      end
     end
   end
 end

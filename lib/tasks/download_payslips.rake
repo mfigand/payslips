@@ -8,9 +8,12 @@ namespace :download do
 
     file = download_file(url)
 
-    payslips = file.read.split
-
-    import_payslips(payslips)
+    if download_success(file)      
+      payslips = file.read.split
+      import_payslips(payslips)
+    else
+      download_error(file)
+    end
   end
 
   def config_params(args)
@@ -29,14 +32,23 @@ namespace :download do
 
   def download_file(url)
     URI.parse(url).open
+  rescue OpenURI::HTTPError => error
+    error
+  end
+
+  def download_success(file)
+    file.instance_of?(StringIO)
+  end
+
+  def download_error(error)
+    puts "Error: file can't be found - #{error.message}" unless Rails.env.test?
   end
 
   def import_payslips(payslips)
     payslips.each do |payslip|
       payslip_attr = parse_payslips(payslip)
 
-      Payslip.create(payslip_attr) unless already_imported(payslip_attr[:registry_id])
-      # PayslipsRepository.save(payslip) unless already_imported(payslip_attr[:registry_id])
+      save_payslip(payslip_attr) unless already_imported(payslip_attr[:registry_id])
     end
   end
 
@@ -56,6 +68,15 @@ namespace :download do
 
   def already_imported(registry_id)
     Payslip.find_by(registry_id: registry_id).present?
+  end
+
+  def save_payslip(payslip_attr)
+    payslip_saved = PayslipSaveRepository.resolve(payslip_attr)
+    payslip_error(payslip_saved.errors) unless payslip_saved.valid?
+  end
+
+  def payslip_error(error)
+    puts "Error: payslip can't be saved - #{error.messages}" unless Rails.env.test?
   end
 
   def ranges
