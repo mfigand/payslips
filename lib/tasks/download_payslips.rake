@@ -8,7 +8,7 @@ namespace :download do
 
     file = download_file(url)
 
-    if download_success(file)      
+    if download_success(file)
       payslips = file.read.split
       import_payslips(payslips)
     else
@@ -32,8 +32,8 @@ namespace :download do
 
   def download_file(url)
     URI.parse(url).open
-  rescue OpenURI::HTTPError => error
-    error
+  rescue OpenURI::HTTPError => e
+    e
   end
 
   def download_success(file)
