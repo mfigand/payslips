@@ -11,5 +11,4 @@ Rails.application.routes.draw do
       get '/payslips', to: 'payslips#index'
     end
   end
-
 end
