@@ -6,7 +6,7 @@ RSpec.describe Api::V1::PayslipsController, type: :controller do
   describe '#index' do
     it do
       get :index
-      expect(response.body).to eq({ data: 'ok' }.to_json)
+      expect(response.status).to eq(200)
     end
   end
 end

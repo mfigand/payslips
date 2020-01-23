@@ -4,9 +4,8 @@ module Api
   module V1
     class PayslipsController < ApplicationController
       def index
-        search = Payslips::SearchInteractor.new(safe_params).resolve
-        # render json: PayslipPresenter.new(search).show
-        render json: { data: 'ok' }
+        search = Payslips::SearchInteractor.new(safe_params).resolve        
+        render json: Payslips::IndexPresenter.new(search).resolve
       end
 
       private
