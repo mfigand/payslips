@@ -2,7 +2,7 @@
 
 module Payslips
   class SearchInteractor
-    attr_accessor :month, :year, :date
+    attr_accessor :month, :year
 
     def initialize(params)
       @month = params[:month]
@@ -14,9 +14,7 @@ module Payslips
     end
 
     def date
-      if month && year
-        Date.strptime("#{@year}-#{@month}", '%Y-%m')
-      end
+      Date.strptime("#{@year}-#{@month}", '%Y-%m') if month && year
     end
   end
 end
