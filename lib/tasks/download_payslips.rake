@@ -56,13 +56,13 @@ namespace :download do
     {}.tap do |p|
       p[:registry_id] = payslip[ranges[:registry_id]]
       p[:vat_idNumber] = payslip[ranges[:vat_idNumber]]
-      p[:date] = payslip[ranges[:date]]
-      p[:gross] = payslip[ranges[:gross]]
-      p[:national_insurance_rate] = payslip[ranges[:national_insurance_rate]]
-      p[:amount_national_insurance_deductions] = payslip[ranges[:amount_national_insurance_deductions]]
-      p[:tax_rate] = payslip[ranges[:tax_rate]]
-      p[:amount_taxes] = payslip[ranges[:amount_taxes]]
-      p[:net] = payslip[ranges[:net]]
+      p[:date] = Date.parse(payslip[ranges[:date]])
+      p[:gross] = payslip[ranges[:gross]].to_f / 100
+      p[:national_insurance_rate] = payslip[ranges[:national_insurance_rate]].to_f / 100
+      p[:amount_national_insurance_deductions] = payslip[ranges[:amount_national_insurance_deductions]].to_f / 100
+      p[:tax_rate] = payslip[ranges[:tax_rate]].to_f / 100
+      p[:amount_taxes] = payslip[ranges[:amount_taxes]].to_f / 100
+      p[:net] = payslip[ranges[:net]].to_f / 100
     end
   end
 

@@ -18,13 +18,13 @@ ActiveRecord::Schema.define(version: 2020_01_20_211739) do
   create_table "payslips", force: :cascade do |t|
     t.string "registry_id", null: false
     t.string "vat_idNumber", null: false
-    t.string "date", null: false
-    t.string "gross", null: false
-    t.string "national_insurance_rate", null: false
-    t.string "amount_national_insurance_deductions", null: false
-    t.string "tax_rate", null: false
-    t.string "amount_taxes", null: false
-    t.string "net", null: false
+    t.date "date", null: false
+    t.float "gross", null: false
+    t.float "national_insurance_rate", null: false
+    t.float "amount_national_insurance_deductions", null: false
+    t.float "tax_rate", null: false
+    t.float "amount_taxes", null: false
+    t.float "net", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["amount_national_insurance_deductions"], name: "index_payslips_on_amount_national_insurance_deductions"

@@ -3,13 +3,13 @@ class CreatePayslips < ActiveRecord::Migration[5.2]
     create_table :payslips do |t|
       t.string :registry_id, null: false, unique: true, index: true
       t.string :vat_idNumber, null: false, index: true
-      t.string :date, null: false, index: true
-      t.string :gross, null: false, index: true
-      t.string :national_insurance_rate, null: false, index: true
-      t.string :amount_national_insurance_deductions, null: false, index: true
-      t.string :tax_rate, null: false, index: true
-      t.string :amount_taxes, null: false, index: true
-      t.string :net, null: false, index: true
+      t.date :date, null: false, index: true
+      t.float :gross, scale: 2, null: false, index: true
+      t.float :national_insurance_rate, scale: 2, null: false, index: true
+      t.float :amount_national_insurance_deductions, scale: 2, null: false, index: true
+      t.float :tax_rate, scale: 2, null: false, index: true
+      t.float :amount_taxes, scale: 2, null: false, index: true
+      t.float :net, scale: 2, null: false, index: true
 
       t.timestamps
     end
