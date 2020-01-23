@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2020_01_20_211739) do
     t.float "tax_rate", null: false
     t.float "amount_taxes", null: false
     t.float "net", null: false
+    t.string "raw_data", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["amount_national_insurance_deductions"], name: "index_payslips_on_amount_national_insurance_deductions"
@@ -34,6 +35,7 @@ ActiveRecord::Schema.define(version: 2020_01_20_211739) do
     t.index ["gross"], name: "index_payslips_on_gross"
     t.index ["national_insurance_rate"], name: "index_payslips_on_national_insurance_rate"
     t.index ["net"], name: "index_payslips_on_net"
+    t.index ["raw_data"], name: "index_payslips_on_raw_data"
     t.index ["registry_id"], name: "index_payslips_on_registry_id"
     t.index ["tax_rate"], name: "index_payslips_on_tax_rate"
     t.index ["updated_at"], name: "index_payslips_on_updated_at"

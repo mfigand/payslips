@@ -10,6 +10,7 @@ class CreatePayslips < ActiveRecord::Migration[5.2]
       t.float :tax_rate, scale: 2, null: false, index: true
       t.float :amount_taxes, scale: 2, null: false, index: true
       t.float :net, scale: 2, null: false, index: true
+      t.string :raw_data, null: false, index: true
 
       t.timestamps
     end

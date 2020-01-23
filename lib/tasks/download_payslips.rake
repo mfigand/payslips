@@ -63,6 +63,7 @@ namespace :download do
       p[:tax_rate] = payslip[ranges[:tax_rate]].to_f / 100
       p[:amount_taxes] = payslip[ranges[:amount_taxes]].to_f / 100
       p[:net] = payslip[ranges[:net]].to_f / 100
+      p[:raw_data] = payslip
     end
   end
 
