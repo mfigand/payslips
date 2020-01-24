@@ -7,20 +7,22 @@ RSpec.describe 'payslips routing' do
   let(:controller) { 'api/v1/payslips' }
 
   context '#index' do
-    let(:endpoint) { { get: controller } }
+    let(:path) { 'api/v1/payslips' }
+    let(:endpoint) { { get: path } }
 
-    it { expect(get: controller).to route_to('api/v1/payslips#index') }
     it do
       is_expected.to route_to(controller: controller, action: 'index')
     end
   end
 
   context '#udpate' do
-    let(:endpoint) { { put: controller } }
+    let(:path) { 'api/v1/payslips/:id' }
+    let(:endpoint) { { put: path } }
 
-    it { expect(put: controller).to route_to('api/v1/payslips#update') }
     it do
-      is_expected.to route_to(controller: controller, action: 'update')
+      is_expected.to route_to(controller: controller,
+                              action: 'update',
+                              id: ':id')
     end
   end
 end

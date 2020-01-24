@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
       get '/payslips', to: 'payslips#index'
 
-      put '/payslips', to: 'payslips#update'
+      put '/payslips/:id', to: 'payslips#update'
     end
   end
 end
