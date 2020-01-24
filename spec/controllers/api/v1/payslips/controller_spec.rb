@@ -9,4 +9,11 @@ RSpec.describe Api::V1::PayslipsController, type: :controller do
       expect(response.status).to eq(200)
     end
   end
+
+  describe '#update' do
+    it do
+      put :update
+      expect(response.status).to eq(200)
+    end
+  end
 end

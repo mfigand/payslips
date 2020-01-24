@@ -8,6 +8,10 @@ module Api
         render json: Payslips::IndexPresenter.new(search).resolve
       end
 
+      def update
+        render json: { data: 'ok' }
+      end
+
       private
 
       def safe_params
