@@ -13,7 +13,7 @@ RSpec.describe Api::V1::PayslipsController, type: :controller do
   describe '#update' do
     it do
       put :update, params: { id: 'id' }
-      expect(response.status).to eq(200)
+      expect(response.status).to eq(404)
     end
   end
 end

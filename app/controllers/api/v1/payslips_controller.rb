@@ -9,13 +9,15 @@ module Api
       end
 
       def update
-        render json: { data: 'ok' }
+        payslip = Payslips::UpdateInteractor.new(params[:id], safe_params).resolve
+        presenter = Payslips::UpdatePresenter.new(payslip).resolve
+        render json: presenter, status: presenter[:status]
       end
 
       private
 
       def safe_params
-        params.permit(:month, :year)
+        params.permit(:month, :year, :tax_rate)
       end
     end
   end
