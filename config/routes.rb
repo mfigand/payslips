@@ -9,6 +9,8 @@ Rails.application.routes.draw do
       get '/ping', to: 'ping#ping', as: 'ping'
 
       get '/payslips', to: 'payslips#index'
+
+      put '/payslips', to: 'payslips#update'
     end
   end
 end
