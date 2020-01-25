@@ -9,7 +9,7 @@ module Payslips
     end
 
     def resolve
-      payslip.instance_of?(Payslip) ? serialized_payslip : { data: '', status: 404 }
+      payslip.instance_of?(Payslip) ? serialized_payslip : { data: payslip[:error], status: 404 }
     end
 
     def serialized_payslip

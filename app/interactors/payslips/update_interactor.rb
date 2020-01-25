@@ -6,11 +6,16 @@ module Payslips
 
     def initialize(id, params)
       @id = id
-      @tax_rate = params[:tax_rate]
+      @tax_rate = params[:tax_rate].to_f
     end
 
     def resolve
-      Payslips::UpdateRepository.resolve(self)
+      payslip = Payslips::FindRepository.resolve(id)
+      payslip.instance_of?(Payslip) ? update(payslip) : payslip
+    end
+
+    def update(payslip)
+      Payslips::UpdateRepository.new(payslip, self).resolve
     end
   end
 end
