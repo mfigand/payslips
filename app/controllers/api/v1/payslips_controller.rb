@@ -4,7 +4,7 @@ module Api
   module V1
     class PayslipsController < ApplicationController
       def index
-        search = Payslips::SearchInteractor.new(safe_params).resolve
+        search = Payslips::SearchInteractor.new(search_params).resolve
         render json: Payslips::IndexPresenter.new(search).resolve
       end
 
@@ -17,7 +17,14 @@ module Api
       private
 
       def safe_params
-        params.permit(:month, :year, :tax_rate)
+        params.permit(:date, :tax_rate)
+      end
+
+      def search_params
+        params.require(:date).permit(:month, :year).tap do |search_params|          
+          search_params.require(:month)
+          search_params.require(:year)
+        end
       end
     end
   end

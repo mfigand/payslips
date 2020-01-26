@@ -18,8 +18,6 @@ module Payslips
     def resolve
       payslip.update(calc_attributes)
       payslip
-    rescue ActiveRecord::RecordNotFound => e
-      { error: e.message }
     end
 
     def calc_attributes

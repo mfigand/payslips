@@ -5,10 +5,12 @@ require 'rails_helper'
 RSpec.describe 'paylips index requests' do
   describe 'GET /payslips' do
     subject(:endpoint_call) do
-      get '/api/v1/payslips', params: { month: month,
-                                        year: year }
+      get '/api/v1/payslips', params: date
     end
 
+    let(:date) do
+      { date: { month: month, year: year } }
+    end 
     let(:month) { '12' }
     let(:year) { '2018' }
     let(:number_of_payslips) { 10 }
@@ -36,7 +38,11 @@ RSpec.describe 'paylips index requests' do
     end
 
     context 'empty params' do
-      # TODO: empty params
+      let(:month) { '' }
+
+      it do
+        expect{subject}.to raise_error ActionController::ParameterMissing
+      end
     end
   end
 end
