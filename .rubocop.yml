@@ -22,4 +22,5 @@ Metrics/BlockLength:
 Metrics/AbcSize:
   Exclude:
     - lib/tasks/download_payslips.rake
+    - app/services/payslips/parser_service.rb
 

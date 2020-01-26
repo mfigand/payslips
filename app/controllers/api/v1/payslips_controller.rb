@@ -21,7 +21,7 @@ module Api
       end
 
       def search_params
-        params.require(:date).permit(:month, :year).tap do |search_params|          
+        params.require(:date).permit(:month, :year).tap do |search_params|
           search_params.require(:month)
           search_params.require(:year)
         end

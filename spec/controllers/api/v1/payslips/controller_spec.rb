@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe Api::V1::PayslipsController, type: :controller do
   let(:params) do
     { date: { month: '09', year: '2018' } }
-  end 
+  end
 
   describe '#index' do
     it do

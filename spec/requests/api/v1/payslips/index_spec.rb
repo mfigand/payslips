@@ -10,7 +10,7 @@ RSpec.describe 'paylips index requests' do
 
     let(:date) do
       { date: { month: month, year: year } }
-    end 
+    end
     let(:month) { '12' }
     let(:year) { '2018' }
     let(:number_of_payslips) { 10 }
@@ -41,7 +41,7 @@ RSpec.describe 'paylips index requests' do
       let(:month) { '' }
 
       it do
-        expect{subject}.to raise_error ActionController::ParameterMissing
+        expect { subject }.to raise_error ActionController::ParameterMissing
       end
     end
   end
