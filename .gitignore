@@ -25,4 +25,3 @@
 # Ignore coverage
 coverage/assets
 coverage/.resultset.json
-coverage/index.html
