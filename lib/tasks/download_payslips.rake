@@ -53,7 +53,7 @@ namespace :download do
   end
 
   def parse_payslips(payslip)
-    Payslips::ParserService.parse(payslip, ranges)
+    Payslips::ParserService.parse(payslip)
   end
 
   def already_imported(registry_id)
@@ -67,19 +67,5 @@ namespace :download do
 
   def payslip_error(error)
     puts "Error: payslip can't be saved - #{error.messages}" unless Rails.env.test?
-  end
-
-  def ranges
-    {}.tap do |ranges|
-      ranges[:registry_id] = 0...12
-      ranges[:vat_idNumber] = 12...21
-      ranges[:date] = 21...29
-      ranges[:gross] = 29...37
-      ranges[:national_insurance_rate] = 37...41
-      ranges[:amount_national_insurance_deductions] = 41...49
-      ranges[:tax_rate] = 49...53
-      ranges[:amount_taxes] = 53...61
-      ranges[:net] = 61...69
-    end
   end
 end
