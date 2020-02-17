@@ -2,7 +2,7 @@
 
 module Payslips
   class SearchInteractor
-    attr_accessor :month, :year
+    attr_reader :month, :year
 
     def initialize(params)
       @month = params[:month]
@@ -10,7 +10,13 @@ module Payslips
     end
 
     def resolve
-      Payslips::SearchRepository.resolve(self)
+      Payslips::SearchRepository.new(date_query).by_date
+    end
+
+    private
+
+    def date_query
+      { date: date }
     end
 
     def date

@@ -2,7 +2,7 @@
 
 module Payslips
   class UpdatePresenter
-    attr_accessor :payslip
+    attr_reader :payslip
 
     def initialize(payslip)
       @payslip = payslip
@@ -14,7 +14,7 @@ module Payslips
 
     def serialized_payslip
       {}.tap do |sp|
-        sp[:data] = Payslips::PayslipSerializer.resolve(payslip)
+        sp[:data] = Payslips::PayslipSerializer.new(payslip).serialize
         sp[:status] = 200
       end
     end

@@ -2,7 +2,7 @@
 
 module Payslips
   class IndexPresenter
-    attr_accessor :collection
+    attr_reader :collection
 
     def initialize(collection)
       @collection = collection
@@ -15,7 +15,7 @@ module Payslips
     def serialized_collection
       {}.tap do |sc|
         sc[:data] = collection.map do |payslip|
-          Payslips::PayslipSerializer.resolve(payslip)
+          Payslips::PayslipSerializer.new(payslip).serialize
         end
       end
     end

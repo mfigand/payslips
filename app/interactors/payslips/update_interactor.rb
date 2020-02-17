@@ -2,7 +2,7 @@
 
 module Payslips
   class UpdateInteractor
-    attr_accessor :id, :tax_rate
+    attr_reader :id, :tax_rate
 
     def initialize(id, params)
       @id = id
@@ -10,7 +10,7 @@ module Payslips
     end
 
     def resolve
-      payslip = Payslips::FindRepository.resolve(id)
+      payslip = Payslips::FindRepository.new(id).find
       payslip.instance_of?(Payslip) ? update(payslip) : payslip
     end
 

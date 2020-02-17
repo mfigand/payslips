@@ -61,7 +61,7 @@ namespace :download do
   end
 
   def save_payslip(payslip_attr)
-    payslip_saved = Payslips::SaveRepository.resolve(payslip_attr)
+    payslip_saved = Payslips::SaveRepository.new(payslip_attr).create
     payslip_error(payslip_saved.errors) unless payslip_saved.valid?
   end
 

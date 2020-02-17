@@ -2,7 +2,13 @@
 
 module Payslips
   class FindRepository
-    def self.resolve(id)
+    attr_reader :id
+
+    def initialize(id)
+      @id = id
+    end
+
+    def find
       Payslip.find(id)
     rescue ActiveRecord::RecordNotFound => e
       { error: e.message }

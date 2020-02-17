@@ -2,7 +2,13 @@
 
 module Payslips
   class PayslipSerializer
-    def self.resolve(payslip)
+    attr_reader :payslip
+
+    def initialize(payslip)
+      @payslip = payslip
+    end
+
+    def serialize
       payslip.slice(:registry_id,
                     :vat_idNumber,
                     :date,
