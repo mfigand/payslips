@@ -12,6 +12,8 @@ module Payslips
       collection ? serialized_collection : {}
     end
 
+    private
+
     def serialized_collection
       {}.tap do |sc|
         sc[:data] = collection.map do |payslip|
