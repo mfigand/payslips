@@ -12,6 +12,8 @@ module Payslips
       payslip.instance_of?(Payslip) ? serialized_payslip : { data: payslip[:error], status: 404 }
     end
 
+    private
+
     def serialized_payslip
       {}.tap do |sp|
         sp[:data] = Payslips::PayslipSerializer.new(payslip).serialize

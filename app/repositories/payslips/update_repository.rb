@@ -3,7 +3,7 @@
 module Payslips
   class UpdateRepository
     attr_reader :payslip, :gross, :amount_national_insurance_deductions,
-                  :tax_rate, :amount_taxes, :net, :new_tax_rate
+                :tax_rate, :amount_taxes, :net, :new_tax_rate
 
     def initialize(payslip, new_attributes)
       @payslip = payslip

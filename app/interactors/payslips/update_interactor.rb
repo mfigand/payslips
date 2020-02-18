@@ -14,6 +14,8 @@ module Payslips
       payslip.instance_of?(Payslip) ? update(payslip) : payslip
     end
 
+    private
+
     def update(payslip)
       Payslips::UpdateRepository.new(payslip, self).resolve
     end
